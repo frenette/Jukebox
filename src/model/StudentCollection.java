@@ -14,4 +14,8 @@ public class StudentCollection {
 		}
 		return null;
 	}
+	
+	public void setStudent(Student newStudent) {
+	    this.students.add(newStudent);
+	}
 }

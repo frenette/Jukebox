@@ -7,7 +7,7 @@ public class ShowLocalDate {
   public static void main(String[] args) {
     // Store today  current date 
     LocalDate lastDatePlayed = LocalDate.now();
-    lastDatePlayed = lastDatePlayed.minusDays(3);
+    lastDatePlayed = lastDatePlayed.minusDays(0);
       
     LocalDate today = LocalDate.now();
     

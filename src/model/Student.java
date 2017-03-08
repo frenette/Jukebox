@@ -5,6 +5,7 @@ import model.Song;
 public class Student {
 	public String name;
 	public int cardID;
+	private String password;
 	public double minutes;
 	public int dailySongs;
 	
@@ -25,5 +26,9 @@ public class Student {
 	
 	public void playSong(double time) {
 		minutes -= time;
+	}
+	
+	public boolean correctPassowrd(String passwordAtempt) {
+	    return this.password.equals(passwordAtempt);
 	}
 }
