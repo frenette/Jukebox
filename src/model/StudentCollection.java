@@ -1,21 +1,22 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class StudentCollection {
 
-	ArrayList<Student> students = new ArrayList<Student>();
-	
-	public Student getStudent(int id) {
-		for(Student s: students) {
-			if (s.cardID == id) {
-				return s;
-			}
-		}
-		return null;
-	}
-	
-	public void setStudent(Student newStudent) {
-	    this.students.add(newStudent);
-	}
+    private Map<String, Student> students;
+    
+    public StudentCollection() {
+	this.students = new TreeMap<>();
+    }
+    
+    public void addStudent(Student student) {
+	this.students.put(student.getUserID(), student);
+    }
+    
+    public Student getStudent(String userID) {
+	return students.get(userID);
+    }
+
 }

@@ -2,20 +2,20 @@ package model;
 
 import java.time.LocalDate;
 
-public class playInformation {
+public class PlayInformation {
     private LocalDate dateOfLastPlayed;
-    private int timesPlayed;
-    private int maxTimesPlayed;
+    private int playCount;
+    private int maxPlayCount;
 
-    public playInformation() {
+    public PlayInformation() {
 	this.dateOfLastPlayed = LocalDate.now();
-	this.timesPlayed = 0;
-	this.maxTimesPlayed = 3;
+	this.playCount = 0;
+	this.maxPlayCount = 3;
     }
 
     public boolean hasRemaningPlays() {
 	if (isSameDay()) {
-	    return this.timesPlayed < this.maxTimesPlayed;
+	    return this.playCount < this.maxPlayCount;
 	} else {
 	    return true;
 	}
@@ -23,11 +23,11 @@ public class playInformation {
     
     public void incrementPlayCount() {
 	if (isSameDay()) {
-	    timesPlayed++;
+	    playCount++;
 	} else {
 	    // it is a whole new day, new data and new count
 	    this.dateOfLastPlayed = LocalDate.now();
-	    this.timesPlayed = 1;
+	    this.playCount = 1;
 	}
     }
 

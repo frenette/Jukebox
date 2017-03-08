@@ -3,32 +3,44 @@ package model;
 import model.Song;
 
 public class Student {
-	public String name;
-	public int cardID;
-	private String password;
-	public double minutes;
-	public int dailySongs;
-	
-	public Student(String n, int id) {
-		name = n;
-		cardID = id;
-		minutes = 1500;
-		dailySongs = 2;
-	}
-	
-	public boolean canPlay(Song song) {
-		if(song.time < minutes) {
-			playSong(song.time);
-			return true;
+    private String userID;
+    private String password;
+    private int playTime;
+    private PlayInformation songsPlayed;
+
+    public Student(String id, String pass) {
+	this.userID = id;
+	this.password = pass;
+	this.playTime = 90000;
+	this.songsPlayed = new PlayInformation();
+    }
+    
+    public String getUserID() {
+	return this.userID;
+    }
+    
+    public boolean correctPassowrd(String passwordAtempt) {
+	return this.password.equals(passwordAtempt);
+    }
+    
+    public boolean canPlay(Song song) {
+	// check if the song is shorter than the user's playTime
+	if (song.getLength() < this.playTime) {
+	    // check if the user has any remaining plays today
+	    if (this.songsPlayed.hasRemaningPlays()) {
+		// check if the song has any remaining plays today
+		if (song.hasRemaningPlays()) {
+		    return true;
 		}
-		return false;
+	    }
 	}
-	
-	public void playSong(double time) {
-		minutes -= time;
-	}
-	
-	public boolean correctPassowrd(String passwordAtempt) {
-	    return this.password.equals(passwordAtempt);
-	}
+
+	return false;
+    }
+    
+    // TODO
+    public void playSong(int time) {
+	playTime -= time;
+    }
+
 }
