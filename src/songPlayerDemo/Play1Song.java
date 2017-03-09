@@ -24,8 +24,8 @@ public class Play1Song {
 		// Construct an instance of the private inner class
 		EndOfSongListener waitForSongEnd = new WaitingForSongToEnd();
 		// TODO DEBUG
-		SongPlayer.playFile(waitForSongEnd, (System.getProperty("user.dir") + "src/songfiles/LopingSting.mp3"));
-//		SongPlayer.playFile(waitForSongEnd, "./songfiles/LopingSting.mp3");
+//		SongPlayer.playFile(waitForSongEnd, (System.getProperty("user.dir") + "/src/songfiles/flute.aif"));
+		SongPlayer.playFile(waitForSongEnd, "/Users/alexanderfrenette/Dropbox/csc 335/git/jukebox17-frenette-ejrosie/songfiles/SwingCheese.mp3");
 		// END DEBUG
 	}
 

@@ -12,6 +12,19 @@ public class Jukebox implements Observer {
     SongSelector selector;
     Student currentStudent;
 
+    public Jukebox(Student currentStudent) {
+	this.currentStudent = currentStudent;
+	
+	queue = new SongQueue();
+	reader = new CardReader();
+	songs = new SongCollection();
+	students = new StudentCollection();
+	selector = new SongSelector();
+    }
+
+    /*
+     * Used for dependency injection for testing
+     */
     public Jukebox() {
 	queue = new SongQueue();
 	reader = new CardReader();
@@ -26,6 +39,10 @@ public class Jukebox implements Observer {
 	} else {
 	    return;
 	}
+    }
+
+    public Student getCurrentStudent() {
+	return this.currentStudent;
     }
 
     @Override

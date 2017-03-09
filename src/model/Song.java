@@ -24,6 +24,10 @@ public class Song {
     public String getSongID() {
 	return this.title;
     }
+    
+    public Path getSongPath() {
+	return this.fileName;
+    }
 
     public boolean hasRemaningPlays() {
 	return timesPlayed.hasRemaningPlays();
@@ -33,8 +37,9 @@ public class Song {
 	return this.songLength;
     }
     
-    /*
-     * TODO : create a method that returns the path for the songPlayer
-     */
+    @Override
+    public String toString() {
+	return this.title;
+    }
 
 }
