@@ -20,8 +20,12 @@ public class Song {
 	this.fileName = Paths.get("/songfiles/" + fileName);
 	this.songLength = songLength;
     }
+    
+    public String getSongID() {
+	return this.title;
+    }
 
-    boolean hasRemaningPlays() {
+    public boolean hasRemaningPlays() {
 	return timesPlayed.hasRemaningPlays();
     }
 

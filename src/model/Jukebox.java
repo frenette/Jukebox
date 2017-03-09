@@ -22,7 +22,7 @@ public class Jukebox implements Observer {
 
     public void play(Song song) {
 	if (currentStudent.canPlay(song)) {
-	    queue.add(song);
+	    queue.addSong(song);
 	} else {
 	    return;
 	}

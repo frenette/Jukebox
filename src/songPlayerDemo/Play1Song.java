@@ -23,7 +23,10 @@ public class Play1Song {
 	public Play1Song() {
 		// Construct an instance of the private inner class
 		EndOfSongListener waitForSongEnd = new WaitingForSongToEnd();
-		SongPlayer.playFile(waitForSongEnd, "./songfiles/LopingSting.mp3");
+		// TODO DEBUG
+		SongPlayer.playFile(waitForSongEnd, (System.getProperty("user.dir") + "src/songfiles/LopingSting.mp3"));
+//		SongPlayer.playFile(waitForSongEnd, "./songfiles/LopingSting.mp3");
+		// END DEBUG
 	}
 
 	/**

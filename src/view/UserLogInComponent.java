@@ -8,6 +8,9 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import controller.ActionListenerType;
+import controller.UserLogInListener;
+
 public class UserLogInComponent extends JPanel {
     private JLabel userdIDLabel;
     private JLabel passwordLabel;
@@ -37,7 +40,11 @@ public class UserLogInComponent extends JPanel {
 
 	this.signOutButton = new JButton("Sign Out");
 	this.loginButton = new JButton("Login");
-
+	
+	// add the listeners
+	this.signOutButton.addActionListener(new UserLogInListener(ActionListenerType.SIGNOUT, null));
+	this.loginButton.addActionListener(new UserLogInListener(ActionListenerType.LOGIN, null));
+	
 	// set the the view layout
 	int rowCount = 4;
 	int columnCount = 2;
@@ -50,5 +57,7 @@ public class UserLogInComponent extends JPanel {
 	this.add(this.passwordField);
 	this.add(this.statusLabel);
 	this.add(this.userStatusLabel);
+	this.add(this.signOutButton);
+	this.add(this.loginButton);
     }
 }

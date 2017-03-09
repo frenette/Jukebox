@@ -1,10 +1,22 @@
 package model;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class SongCollection {
 
-	ArrayList<Song> songList = new ArrayList<Song>();
-	
+    private Map<String, Song> songs;
+    
+    public SongCollection() {
+	this.songs = new TreeMap<>();
+    }
+    
+    public void addSong(Song song) {
+	this.songs.put(song.getSongID(), song);
+    }
+    
+    public Song getSong(String songID) {
+	return this.songs.get(songID);
+    }
 
 }

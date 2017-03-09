@@ -57,6 +57,9 @@ public class AudioFilePlayer extends Thread {
 		AudioFormat decodedFormat = null;
 		try {
 			File file = new File(fileName);
+			// TODO DEBUG
+			System.out.println(file.toPath());
+			// END DEBUG
 			AudioInputStream in = AudioSystem.getAudioInputStream(file);
 			AudioInputStream din = null;
 			AudioFormat baseFormat = in.getFormat();

@@ -5,15 +5,22 @@ import java.util.Queue;
 
 public class SongQueue {
 
-	public Queue<Song> songs = new LinkedList<Song>();
-	
-	public void add(Song song) {
-		songs.add(song);
-	}
-	public void play(Song song) {
-		for(Song s: songs) {
-			System.out.println(s);
-		}
-	}
+    private Queue<Song> songs;
+
+    public SongQueue() {
+	songs = new LinkedList<>();
+    }
+
+    public void addSong(Song song) {
+	this.songs.add(song);
+    }
+
+    public Song getNextSong() {
+	return this.songs.poll();
+    }
+
+    public void listSongs(Song song) {
+	this.songs.forEach(System.out::println);
+    }
 
 }
