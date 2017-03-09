@@ -21,6 +21,11 @@ public class UserLogInComponent extends JPanel {
      * songs selected today> selected, <time until the next day
      * hours:minutes:seconds>
      */
+    
+    /*
+     * TODO : add the status information, row 5
+     */
+    
     private JLabel userStatusLabel;
 
     private JTextField userdIDField;
@@ -42,8 +47,9 @@ public class UserLogInComponent extends JPanel {
 	this.loginButton = new JButton("Login");
 	
 	// add the listeners
-	this.signOutButton.addActionListener(new UserLogInListener(ActionListenerType.SIGNOUT, null));
-	this.loginButton.addActionListener(new UserLogInListener(ActionListenerType.LOGIN, null));
+	// TODO : add the jukebox to replace the null
+	this.signOutButton.addActionListener(new UserLogInListener(ActionListenerType.SIGNOUT, null, this));
+	this.loginButton.addActionListener(new UserLogInListener(ActionListenerType.LOGIN, null, this));
 	
 	// set the the view layout
 	int rowCount = 4;
@@ -59,5 +65,13 @@ public class UserLogInComponent extends JPanel {
 	this.add(this.userStatusLabel);
 	this.add(this.signOutButton);
 	this.add(this.loginButton);
+    }
+    
+    public String getUserIDFieldValue() {
+	return this.userdIDField.getText();
+    }
+    
+    public String passwordFieldValue() {
+	return String.valueOf(this.passwordField.getPassword());
     }
 }

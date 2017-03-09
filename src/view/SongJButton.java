@@ -2,16 +2,13 @@ package view;
 
 import javax.swing.JButton;
 
+import controller.SongJButtonActionListener;
+import model.Jukebox;
 import model.Song;
 
 @SuppressWarnings("serial")
 public class SongJButton extends JButton {
-
-    /*
-     * We need to keep track of the state of the jukebox because the action
-     * listener needs to know if there is a user that is signed in to know to
-     * add the song to the queue or not
-     */
+    
     private model.Jukebox jukebox;
     private Song song;
 
@@ -21,14 +18,15 @@ public class SongJButton extends JButton {
 	this.song = song;
 	// Initialize the button text
 	this.setText(this.song.toString());
-    }
-    
-    public model.Jukebox getJukebox() {
-	return this.jukebox;
+	this.addActionListener();
     }
 
     public Song getSong() {
 	return this.song;
+    }
+    
+    private void addActionListener() {
+	this.addActionListener(new SongJButtonActionListener(this.jukebox));
     }
 
 }

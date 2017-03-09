@@ -5,15 +5,24 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
 
+import model.Jukebox;
 import model.Song;
 import model.SongQueue;
 import model.Student;
-import songplayer.EndOfSongEvent;
-import songplayer.EndOfSongListener;
-import songplayer.SongPlayer;
+
 import view.SongJButton;
 
 public class SongJButtonActionListener implements ActionListener {
+    /*
+     * We need a reference to jukebox to make sure that there is a current user
+     * logged on
+     */
+    private Jukebox jukebox;
+    
+    public SongJButtonActionListener(Jukebox jukebox) {
+	super();
+	this.jukebox = jukebox;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -25,7 +34,6 @@ public class SongJButtonActionListener implements ActionListener {
     private void testing(ActionEvent e) {
 	SongJButton source = (SongJButton) e.getSource();
 	Song song = source.getSong();
-	model.Jukebox jukebox = source.getJukebox();
 	SongQueue songQueue = jukebox.getSongQueue();
 	// see if the jukebox has a user signed in
 	Student currentStudent = jukebox.getCurrentStudent();
@@ -50,27 +58,11 @@ public class SongJButtonActionListener implements ActionListener {
 		 * play the song, or the song has already been played 3 times
 		 */
 	    }
-
-	    EndOfSongListener waitForSongEnd = new WaitingForSongToEnd();
-	    SongPlayer.playFile(waitForSongEnd,
-		    "/Users/alexanderfrenette/Dropbox/csc 335/git/jukebox17-frenette-ejrosie/songfiles/SwingCheese.mp3");
 	} else {
 	    // open a dialog box saying you need to log in first
 	    System.out.println("currentStudent == null");
 	}
 
-    }
-
-    /**
-     * This inner class allows us to have an callback function that receive a
-     * songFinishedPlaying message whenever an audio file has been played.
-     */
-    private class WaitingForSongToEnd implements EndOfSongListener {
-
-	public void songFinishedPlaying(EndOfSongEvent eosEvent) {
-	    System.out.println("\nFinished " + eosEvent.fileName() + ", " + eosEvent.finishedDate() + ", "
-		    + eosEvent.finishedTime());
-	}
     }
     // End testing
 

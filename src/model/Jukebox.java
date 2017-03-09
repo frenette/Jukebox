@@ -4,59 +4,57 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class Jukebox implements Observer {
-
-    SongQueue queue;
-    CardReader reader;
+    
     SongCollection songs;
+    SongQueue queue;
     StudentCollection students;
-    SongSelector selector;
     Student currentStudent;
-
-    public Jukebox(Student currentStudent) {
-	this.currentStudent = currentStudent;
-
-	queue = new SongQueue();
-	reader = new CardReader();
-	songs = new SongCollection();
-	students = new StudentCollection();
-	selector = new SongSelector();
+    
+    public Jukebox() {
+	this.songs = new SongCollection();
+	this.queue = new SongQueue();
+	this.students = new StudentCollection();
     }
-
+    
     /*
      * Used for dependency injection for testing
      */
-    public Jukebox() {
-	queue = new SongQueue();
-	reader = new CardReader();
-	songs = new SongCollection();
-	students = new StudentCollection();
-	selector = new SongSelector();
-    }
+    public Jukebox(Student injectedStudent) {
+	this.currentStudent = injectedStudent;
 
-    public void play(Song song) {
-	if (currentStudent.canPlay(song)) {
-	    queue.addSong(song);
-	} else {
-	    return;
-	}
+	this.songs = new SongCollection();
+	this.queue = new SongQueue();
+	this.students = new StudentCollection();
     }
-
-    public Student getCurrentStudent() {
-	return this.currentStudent;
+    
+    public SongCollection getSongCollection() {
+	return this.songs;
+    }
+    
+    public void addToSongCollection(Song song) {
+	this.songs.addSong(song);
     }
     
     public SongQueue getSongQueue() {
 	return this.queue;
     }
+        
+    public Student getCurrentStudent() {
+	return this.currentStudent;
+    }
+    
+    public void setCurrentStudent(Student newStudent) {
+	this.currentStudent = newStudent;
+    }
 
     @Override
     public void update(Observable o, Object arg) {
-	if (arg instanceof Student) {
-	    currentStudent = (Student) arg;
-	    selector.unlock();
-	} else {
-	    play((Song) arg);
-	}
-
+	// TODO
+//	if (arg instanceof Student) {
+//	    currentStudent = (Student) arg;
+//	    selector.unlock();
+//	} else {
+//	    play((Song) arg);
+//	}
     }
 }

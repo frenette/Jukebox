@@ -2,3 +2,6 @@ NOTES:
 with the songs we only care about the file path
 
 DailyPlayStats
+
+
+we are going to let each component be reponsible for their action listener
