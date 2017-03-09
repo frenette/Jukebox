@@ -38,6 +38,10 @@ public class Song {
 	return this.songLength;
     }
     
+    public void queuedSong() {
+	this.timesPlayed.incrementPlayCount();
+    }
+    
     @Override
     public String toString() {
 	return this.title;

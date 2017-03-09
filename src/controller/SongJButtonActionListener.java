@@ -36,10 +36,11 @@ public class SongJButtonActionListener implements ActionListener {
 	    System.out.println("songTitle: " + ((SongJButton) e.getSource()).getSong().toString());
 	    System.out.println("canPlay: " + currentStudent.canPlay(song));
 
-	    // check if the song can be played
+	    // check if the currentStudent can play the song
 	    if (currentStudent.canPlay(song)) {
 		/*
-		 * Add the song to the queue which will also update the student's information about having played the song
+		 * Add the song to the queue which will also update the
+		 * student's information about having played the song
 		 */
 		songQueue.addSong(song, currentStudent);
 	    } else {
