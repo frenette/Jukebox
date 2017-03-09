@@ -14,7 +14,7 @@ public class Jukebox implements Observer {
 
     public Jukebox(Student currentStudent) {
 	this.currentStudent = currentStudent;
-	
+
 	queue = new SongQueue();
 	reader = new CardReader();
 	songs = new SongCollection();
@@ -44,6 +44,10 @@ public class Jukebox implements Observer {
     public Student getCurrentStudent() {
 	return this.currentStudent;
     }
+    
+    public SongQueue getSongQueue() {
+	return this.queue;
+    }
 
     @Override
     public void update(Observable o, Object arg) {
@@ -55,5 +59,4 @@ public class Jukebox implements Observer {
 	}
 
     }
-
 }

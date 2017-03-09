@@ -3,6 +3,10 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JDialog;
+
+import model.Song;
+import model.SongQueue;
 import model.Student;
 import songplayer.EndOfSongEvent;
 import songplayer.EndOfSongListener;
@@ -20,13 +24,32 @@ public class SongJButtonActionListener implements ActionListener {
     // Testing
     private void testing(ActionEvent e) {
 	SongJButton source = (SongJButton) e.getSource();
+	Song song = source.getSong();
 	model.Jukebox jukebox = source.getJukebox();
+	SongQueue songQueue = jukebox.getSongQueue();
 	// see if the jukebox has a user signed in
 	Student currentStudent = jukebox.getCurrentStudent();
 
+	// check if there is a student
 	if (currentStudent != null) {
-	    //
-	    System.out.println(((SongJButton) e.getSource()).getSong().toString());
+	    System.out.println("userID: " + currentStudent.getUserID());
+	    System.out.println("songTitle: " + ((SongJButton) e.getSource()).getSong().toString());
+	    System.out.println("canPlay: " + currentStudent.canPlay(song));
+
+	    // check if the song can be played
+	    if (currentStudent.canPlay(song)) {
+		/*
+		 * Add the song to the queue which will also update the student's information about having played the song
+		 */
+		songQueue.addSong(song, currentStudent);
+	    } else {
+		/*
+		 * The song is unable to be played, may be because the user has
+		 * already played 3 songs, the user does not have enough time to
+		 * play the song, or the song has already been played 3 times
+		 */
+	    }
+
 	    EndOfSongListener waitForSongEnd = new WaitingForSongToEnd();
 	    SongPlayer.playFile(waitForSongEnd,
 		    "/Users/alexanderfrenette/Dropbox/csc 335/git/jukebox17-frenette-ejrosie/songfiles/SwingCheese.mp3");

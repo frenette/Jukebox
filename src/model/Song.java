@@ -19,6 +19,7 @@ public class Song {
 	this.title = title;
 	this.fileName = Paths.get("/songfiles/" + fileName);
 	this.songLength = songLength;
+	this.timesPlayed = new PlayInformation();
     }
     
     public String getSongID() {

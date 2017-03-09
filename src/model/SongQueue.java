@@ -14,6 +14,11 @@ public class SongQueue {
     public void addSong(Song song) {
 	this.songs.add(song);
     }
+    
+    public void addSong(Song song, Student student) {
+	this.songs.add(song);
+	student.queuedSong(song);
+    }
 
     public Song getNextSong() {
 	return this.songs.poll();

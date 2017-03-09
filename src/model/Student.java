@@ -38,9 +38,9 @@ public class Student {
 	return false;
     }
     
-    // TODO
-    public void playSong(int time) {
-	playTime -= time;
+    public void queuedSong(Song song) {
+	this.songsPlayed.incrementPlayCount();
+	this.playTime -= song.getLength();
     }
 
 }
