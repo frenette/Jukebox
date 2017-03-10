@@ -34,7 +34,6 @@ public class UserLogInComponent extends JPanel {
     private JButton loginButton;
 
     public UserLogInComponent(model.Jukebox jukebox) {
-	// TODO
 	this.jukebox = jukebox;
 
 	this.userdIDLabel = new JLabel("Account Name");

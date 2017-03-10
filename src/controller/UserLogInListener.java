@@ -74,7 +74,9 @@ public class UserLogInListener implements ActionListener {
 
 	    // The student is invalid
 	    System.out.println("Error : invalid student.");
-	    // TODO : create error dialog
+
+	    // clear the field
+	    userLogInComponent.clearFields();
 
 	}
     }
@@ -87,14 +89,18 @@ public class UserLogInListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	    System.out.println("signOut");
-	    
+
 	    // TODO
-//	    System.out.println("getCurrentStudent: " + jukebox.getCurrentStudent().toString());
+	    // System.out.println("getCurrentStudent: " +
+	    // jukebox.getCurrentStudent().toString());
 	    System.out.println("I am here 1");
 	    if (jukebox.getCurrentStudent() != null) {
 		System.out.println("I am here 2");
 		System.out.println("Current studdent: " + jukebox.getCurrentStudent().toString());
 		jukebox.setCurrentStudent(null);
+
+		// clear the field
+		userLogInComponent.clearFields();
 	    } else {
 		/*
 		 * TODO : we have the ability to give an alert because the user
