@@ -1,3 +1,6 @@
+/*
+ * Contains song information for each button.
+ */
 package view;
 
 import javax.swing.JButton;
@@ -21,6 +24,7 @@ public class SongJButton extends JButton {
 	this.addActionListener();
     }
 
+    //Gets song tied to button.
     public Song getSong() {
 	return this.song;
     }

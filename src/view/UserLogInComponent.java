@@ -1,3 +1,6 @@
+/*
+ * Holds log-in field and information for users.
+ */
 package view;
 
 import java.awt.GridLayout;
@@ -68,14 +71,17 @@ public class UserLogInComponent extends JPanel {
 	this.add(this.userStatusLabel);
     }
 
+    //Gets the username from the username field.
     public String getUserIDFieldValue() {
 	return this.userdIDField.getText();
     }
 
+    //Gets password from password field.
     public String getPasswordFieldValue() {
 	return String.valueOf(this.passwordField.getPassword());
     }
 
+    //Clear fields on wrong entry.
     public void clearFields() {
 	this.userdIDField.setText(null);
 	this.passwordField.setText(null);
