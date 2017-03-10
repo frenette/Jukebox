@@ -28,14 +28,6 @@ public class SongQueue extends Observable implements Iterator<Song> {
 	    @Override
 	    public void update(Observable o, Object arg) {
 		// TODO Auto-generated method stub
-		System.out.println("I WAS UPDATED");
-		System.out.println("I WAS UPDATED");
-		System.out.println("I WAS UPDATED");
-		System.out.println("I WAS UPDATED");
-		System.out.println("I WAS UPDATED");
-		System.out.println("I WAS UPDATED");
-		System.out.println("I WAS UPDATED");
-		System.out.println("I WAS UPDATED");
 	    }
 
 	});
@@ -65,8 +57,11 @@ public class SongQueue extends Observable implements Iterator<Song> {
 	return this.songs.poll();
     }
 
-    public void listSongs() {
+    public String listSongs() {
+    String result = "";
+    for(Song s : songs) { result += s; }
 	this.songs.forEach(System.out::println);
+	return result;
     }
 
     @Override
