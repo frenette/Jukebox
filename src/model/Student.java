@@ -37,6 +37,10 @@ public class Student {
 
 	return false;
     }
+    
+    public int songsPlayedToday() {
+	return this.songsPlayed.songsPlayed();
+    }
 
     public void queuedSong(Song song) {
 	this.songsPlayed.incrementPlayCount();

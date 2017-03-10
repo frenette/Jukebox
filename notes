@@ -1,10 +1,9 @@
 NOTES:
 with the songs we only care about the file path
-
 DailyPlayStats
 
+TODO:
+	- add the status changer when a song plays, or a user logs in
+	- make Student Observable, and have the jukebox an Observer
 
-we are going to let each component be reponsible for their action listener
 
-
-SongPlayer is the only thing that cares about the songQUeue

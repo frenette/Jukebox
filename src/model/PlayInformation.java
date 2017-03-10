@@ -20,6 +20,25 @@ public class PlayInformation {
 	    return true;
 	}
     }
+    
+    public int songsPlayed() {
+	if (!isSameDay()) {
+	    this.dateOfLastPlayed = LocalDate.now();
+	    this.playCount = 0;
+	}
+	
+	return this.playCount;
+    }
+    
+    public void timeOfNextDay() {
+	if (!isSameDay()) {
+	 // it is a whole new day, new data and new count
+	    this.dateOfLastPlayed = LocalDate.now();
+	    this.playCount = 0;
+	}
+	
+//	this.dateOfLastPlayed.
+    }
 
     public void incrementPlayCount() {
 	if (isSameDay()) {
