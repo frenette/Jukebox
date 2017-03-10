@@ -14,7 +14,7 @@ public class InitializeUsers {
     public InitializeUsers(Jukebox jukebox) {
 	this.jukebox = jukebox;
     }
-
+    
     public void initializeUsers() {
 	String[] studentsInformation = { "Chris", "1", "Devon", "22", "River", "333", "Ryan", "4444" };
 

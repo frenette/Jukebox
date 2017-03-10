@@ -1,3 +1,7 @@
+/*
+ * Holds play information for users/songs, holds time info.
+ */
+
 package model;
 
 import java.time.LocalDate;
@@ -13,6 +17,7 @@ public class PlayInformation {
 	this.maxPlayCount = 3;
     }
 
+    //Checks playcount of specific song/student.
     public boolean hasRemaningPlays() {
 	if (isSameDay()) {
 	    return this.playCount < this.maxPlayCount;
@@ -21,6 +26,7 @@ public class PlayInformation {
 	}
     }
     
+    // returns number of songs played for song/student
     public int songsPlayed() {
 	if (!isSameDay()) {
 	    this.dateOfLastPlayed = LocalDate.now();
@@ -30,6 +36,7 @@ public class PlayInformation {
 	return this.playCount;
     }
     
+    //returns time of next day for time information
     public void timeOfNextDay() {
 	if (!isSameDay()) {
 	 // it is a whole new day, new data and new count
@@ -39,7 +46,7 @@ public class PlayInformation {
 	
 //	this.dateOfLastPlayed.
     }
-
+    //Increments the playcount of student/song
     public void incrementPlayCount() {
 	if (isSameDay()) {
 	    playCount++;
@@ -50,6 +57,7 @@ public class PlayInformation {
 	}
     }
 
+    //Method to reset the play count if it is a new day.
     private boolean isSameDay() {
 	LocalDate currentTime = LocalDate.now();
 
