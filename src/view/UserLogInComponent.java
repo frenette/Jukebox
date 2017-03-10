@@ -12,9 +12,9 @@ import controller.ActionListenerType;
 import controller.UserLogInListener;
 
 public class UserLogInComponent extends JPanel {
-    
+
     private model.Jukebox jukebox = new model.Jukebox();
-    
+
     private JLabel userdIDLabel;
     private JLabel passwordLabel;
     private JLabel statusLabel;
@@ -24,11 +24,7 @@ public class UserLogInComponent extends JPanel {
      * songs selected today> selected, <time until the next day
      * hours:minutes:seconds>
      */
-    
-    /*
-     * TODO : add the status information, row 5
-     */
-    
+
     private JLabel userStatusLabel;
 
     private JTextField userdIDField;
@@ -40,7 +36,7 @@ public class UserLogInComponent extends JPanel {
     public UserLogInComponent(model.Jukebox jukebox) {
 	// TODO
 	this.jukebox = jukebox;
-	
+
 	this.userdIDLabel = new JLabel("Account Name");
 	this.passwordLabel = new JLabel("Password");
 	this.statusLabel = new JLabel("Status:");
@@ -51,11 +47,11 @@ public class UserLogInComponent extends JPanel {
 
 	this.signOutButton = new JButton("Sign Out");
 	this.loginButton = new JButton("Login");
-	
+
 	// add the listeners
 	this.signOutButton.addActionListener(new UserLogInListener(ActionListenerType.SIGNOUT, jukebox, this));
 	this.loginButton.addActionListener(new UserLogInListener(ActionListenerType.LOGIN, jukebox, this));
-	
+
 	// set the the view layout
 	int rowCount = 4;
 	int columnCount = 2;
@@ -71,12 +67,24 @@ public class UserLogInComponent extends JPanel {
 	this.add(this.statusLabel);
 	this.add(this.userStatusLabel);
     }
-    
+
     public String getUserIDFieldValue() {
 	return this.userdIDField.getText();
     }
-    
+
     public String getPasswordFieldValue() {
 	return String.valueOf(this.passwordField.getPassword());
+    }
+
+    public void clearFields() {
+	this.userdIDField.setText(null);
+	this.passwordField.setText(null);
+    }
+
+    public void updateStatusLabel() {
+	// <number of songs selected today> selected, <time until the next day
+	// hours:minutes:seconds>
+	// TODO
+//	this.statusLabel.setText(Integer.toString(this.jukebox.getCurrentStudent().songsPlayedToday()) + " selected, " + this.jukebox.getCurrentStudent().get);
     }
 }

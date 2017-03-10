@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 import model.Jukebox;
 import model.Song;
@@ -66,6 +67,7 @@ public class SongJButtonActionListener implements ActionListener {
 	} else {
 	    // open a dialog box saying you need to log in first
 	    System.out.println("currentStudent == null");
+	    JOptionPane.showMessageDialog(null, "User must log in before playing a song");
 	}
     }
     // End testing
