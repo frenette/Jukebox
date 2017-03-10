@@ -14,15 +14,15 @@ public class Student {
 	this.playTime = 90000;
 	this.songsPlayed = new PlayInformation();
     }
-    
+
     public String getUserID() {
 	return this.userID;
     }
-    
+
     public boolean correctPassowrd(String passwordAtempt) {
 	return this.password.equals(passwordAtempt);
     }
-    
+
     public boolean canPlay(Song song) {
 	// check if the song is shorter than the user's playTime
 	if (song.getLength() < this.playTime) {
@@ -37,15 +37,14 @@ public class Student {
 
 	return false;
     }
-    
+
     public void queuedSong(Song song) {
 	this.songsPlayed.incrementPlayCount();
 	this.playTime -= song.getLength();
     }
-    
+
     @Override
     public String toString() {
 	return this.userID;
     }
-
 }

@@ -13,7 +13,7 @@ public class InitializeUsers {
     }
 
     public void initializeUsers() {
-	String[] studentsInformation = { "Chris", "1", "Devon", " 22", "River", "333", "Ryan", "4444" };
+	String[] studentsInformation = { "Chris", "1", "Devon", "22", "River", "333", "Ryan", "4444" };
 
 	for (int index = 0; index < studentsInformation.length; index++) {
 	    this.jukebox.getStudentCollection()

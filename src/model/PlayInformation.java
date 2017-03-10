@@ -20,7 +20,7 @@ public class PlayInformation {
 	    return true;
 	}
     }
-    
+
     public void incrementPlayCount() {
 	if (isSameDay()) {
 	    playCount++;

@@ -5,3 +5,6 @@ DailyPlayStats
 
 
 we are going to let each component be reponsible for their action listener
+
+
+SongPlayer is the only thing that cares about the songQUeue

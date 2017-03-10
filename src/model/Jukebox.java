@@ -3,12 +3,14 @@ package model;
 import java.util.Observable;
 import java.util.Observer;
 
+import controller.SongPlayer;
+
 public class Jukebox implements Observer {
 
-    SongCollection songs;
-    SongQueue queue;
-    StudentCollection students;
-    Student currentStudent;
+    private SongCollection songs;
+    private SongQueue queue;
+    private StudentCollection students;
+    private Student currentStudent;
 
     public Jukebox() {
 	this.songs = new SongCollection();

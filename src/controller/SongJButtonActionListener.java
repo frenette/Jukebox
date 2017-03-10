@@ -40,6 +40,7 @@ public class SongJButtonActionListener implements ActionListener {
 
 	// check if there is a student
 	if (currentStudent != null) {
+	    System.out.println("\n=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
 	    System.out.println("userID: " + currentStudent.getUserID());
 	    System.out.println("songTitle: " + ((SongJButton) e.getSource()).getSong().toString());
 	    System.out.println("canPlay: " + currentStudent.canPlay(song));
@@ -50,7 +51,9 @@ public class SongJButtonActionListener implements ActionListener {
 		 * Add the song to the queue which will also update the
 		 * student's information about having played the song
 		 */
+		System.out.println("songQueue.addSong(song, currentStudent);");
 		songQueue.addSong(song, currentStudent);
+		songQueue.listSongs();
 	    } else {
 		/*
 		 * The song is unable to be played, may be because the user has
@@ -58,11 +61,12 @@ public class SongJButtonActionListener implements ActionListener {
 		 * play the song, or the song has already been played 3 times
 		 */
 	    }
+	    
+	    System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n");
 	} else {
 	    // open a dialog box saying you need to log in first
 	    System.out.println("currentStudent == null");
 	}
-
     }
     // End testing
 

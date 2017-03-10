@@ -10,7 +10,7 @@ public class Song {
     private Path fileName;
     private int songLength;
     private PlayInformation timesPlayed;
-    
+
     public Song(String artist, String title, String fileName, int songLength) {
 	this.artist = artist;
 	this.title = title;
@@ -18,11 +18,11 @@ public class Song {
 	this.songLength = songLength;
 	this.timesPlayed = new PlayInformation();
     }
-    
+
     public String getSongID() {
 	return this.title;
     }
-    
+
     public Path getSongPath() {
 	return this.fileName;
     }
@@ -34,11 +34,11 @@ public class Song {
     public int getLength() {
 	return this.songLength;
     }
-    
+
     public void queuedSong() {
 	this.timesPlayed.incrementPlayCount();
     }
-    
+
     @Override
     public String toString() {
 	return this.title;

@@ -21,12 +21,10 @@ public class Jukebox extends JFrame {
 	/* 
 	 * TODO
 	 */
-	// Testing
 	this.add(new SongDisplayComponent(this.jukebox));
 	System.out.println("SongDisplayComponent done");
 	this.add(new UserLogInComponent(this.jukebox));
 	System.out.println("UserLogInComponent done");
-	// End testing
 	this.setSize(1200, 200);
 	this.setVisible(true);
 	this.setDefaultCloseOperation(EXIT_ON_CLOSE);
