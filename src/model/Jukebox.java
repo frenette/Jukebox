@@ -1,3 +1,7 @@
+/*
+ * Coordinator class, combines all the other classes.
+ */
+
 package model;
 
 import java.util.Observable;

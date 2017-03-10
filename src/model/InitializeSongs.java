@@ -1,3 +1,7 @@
+/*
+ * Initialize songs is the holder for the required songs.
+ */
+
 package model;
 
 public class InitializeSongs {
@@ -18,7 +22,8 @@ public class InitializeSongs {
 	this.jukebox = jukebox;
 	this.initializeSongs();
     }
-
+    
+    //Cleaner initialization method.
     public void initializeSongs() {
 	String[] songInformation = { "Kevin MacLeod", "Danse Macabre", "DanseMacabreViolinHook.mp3", "34",
 		"FreePlay Music", "Determined Tumbao", "DeterminedTumbao.mp3", "20", "Sun Microsystems", "Flute",
