@@ -15,7 +15,8 @@ public class InitializeUsers {
 	this.jukebox = jukebox;
 	this.initializeUsers();
     }
-
+    
+    //Cleaner initialize method.
     public void initializeUsers() {
 	String[] studentsInformation = { "Chris", "1", "Devon", "22", "River", "333", "Ryan", "4444" };
 

@@ -1,3 +1,6 @@
+/*
+ * Main GUI for jukebox program.
+ */
 package view;
 
 import java.awt.FlowLayout;
@@ -16,6 +19,7 @@ public class Jukebox extends JFrame {
 	initilize();
     }
     
+    //Adds view.
     private void initilize() {
 	this.setLayout(new FlowLayout());
 	/* 

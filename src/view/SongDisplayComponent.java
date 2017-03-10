@@ -1,3 +1,6 @@
+/*
+ * Displays a list of all songs avaiable for the user to play.
+ */
 package view;
 
 import java.awt.FlowLayout;
@@ -28,6 +31,7 @@ public class SongDisplayComponent extends JPanel {
 	System.out.println("SongDisplayComponent constructor done");
     }
     
+    //Initializes a button for each song.
     private void initilizeButtons() {
 	// get the songs from the jukebox
 	SongCollection songCollection = this.jukebox.getSongCollection();

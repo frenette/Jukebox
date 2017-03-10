@@ -1,3 +1,6 @@
+/*
+ * Starts the Jukeboxes, and puts model.jukebox into view.jukebox.
+ */
 package controller;
 
 public class JukeboxStartGUI {

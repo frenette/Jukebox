@@ -1,3 +1,7 @@
+/*
+ * Plays the songs, and controls the sounds.
+ */
+
 package controller;
 
 import java.util.Observable;
@@ -29,6 +33,7 @@ public class SongPlayer implements Observer {
 	this.playSong();
     }
     
+    //Plays the song if there is one.
     private void playSong() {
 	if (this.songPlaying == false) {
 	    if (songQueue.hasNext()) {

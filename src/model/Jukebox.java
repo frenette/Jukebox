@@ -1,5 +1,6 @@
 /*
- * Coordinator class, combines all the other classes.
+ * Coordinator class, combines all the other classes. 
+ * Last thing: we just can't bring ourselves to comment what a getter or setter does.
  */
 
 package model;
@@ -50,27 +51,32 @@ public class Jukebox implements Observer {
 	initSongs.initializeSongs();
 	System.out.println("Initialized songs");
     }
-
+  
     public SongCollection getSongCollection() {
 	return this.songs;
     }
-
+    
+    //adds a song to song collections
     public void addToSongCollection(Song song) {
 	this.songs.addSong(song);
     }
 
+    
     public SongQueue getSongQueue() {
 	return this.queue;
     }
 
+    
     public StudentCollection getStudentCollection() {
 	return this.students;
     }
 
+    
     public Student getCurrentStudent() {
 	return this.currentStudent;
     }
 
+    
     public void setCurrentStudent(Student newStudent) {
 	this.currentStudent = newStudent;
     }

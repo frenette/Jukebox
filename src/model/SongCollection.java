@@ -1,3 +1,7 @@
+/*
+ * SongCollection stores each song.
+ */
+
 package model;
 
 import java.util.Iterator;
@@ -12,6 +16,7 @@ public class SongCollection {
 	this.songs = new TreeMap<>();
     }
     
+    //Adds a song to the colleciton
     public void addSong(Song song) {
 	this.songs.put(song.getSongID(), song);
     }
@@ -20,6 +25,7 @@ public class SongCollection {
 	return this.songs.get(songID);
     }
     
+    //The songs are stored as an iterator so that it is easier to get them for the buttons.
     public Iterator<Song> getIterator() {
 	return this.songs.values().iterator();
     }

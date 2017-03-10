@@ -1,3 +1,6 @@
+/*
+ * ActionListeners for the song buttons.
+ */
 package controller;
 
 import java.awt.event.ActionEvent;

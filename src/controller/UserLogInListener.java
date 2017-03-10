@@ -1,3 +1,6 @@
+/*
+ * Listens for the user log in, and verifys each user.
+ */
 package controller;
 
 import java.awt.event.ActionEvent;
@@ -41,6 +44,7 @@ public class UserLogInListener implements ActionListener {
 
     /*
      * Class : logIn
+     * Verifys username and password
      */
     private class logIn implements ActionListener {
 
@@ -83,6 +87,7 @@ public class UserLogInListener implements ActionListener {
 
     /*
      * Class : signOut
+     * Controls the user signing out.
      */
     private class signOut implements ActionListener {
 

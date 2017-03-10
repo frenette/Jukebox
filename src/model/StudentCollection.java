@@ -1,3 +1,6 @@
+/*
+ * Holds all of the students.
+ */
 package model;
 
 import java.util.Map;
@@ -11,6 +14,7 @@ public class StudentCollection {
 	this.students = new TreeMap<>();
     }
 
+    //Adds a student to the collection.
     public void addStudent(Student student) {
 	this.students.put(student.getUserID(), student);
     }

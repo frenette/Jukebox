@@ -1,3 +1,7 @@
+/*
+ * Class to hold 1 song and all its information.
+ */
+
 package model;
 
 import java.nio.file.Path;
@@ -34,7 +38,8 @@ public class Song {
     public int getLength() {
 	return this.songLength;
     }
-
+    
+    //Handles changing the song played count.
     public void queuedSong() {
 	this.timesPlayed.incrementPlayCount();
     }
