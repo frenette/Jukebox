@@ -1,3 +1,7 @@
+/*
+ * This holds the current queue of songs.
+ */
+
 package model;
 
 import java.util.Observable;
@@ -18,6 +22,7 @@ public class SongQueue extends Observable implements Iterator<Song> {
 	this.addObserver(this.songPlayer);
     }
 
+    //Adds a song to the queue, then updates # of times played on the student and the song.
     public void addSong(Song song, Student student) {
 	this.songs.add(song);
 	song.queuedSong();
@@ -42,6 +47,7 @@ public class SongQueue extends Observable implements Iterator<Song> {
 	return this.songs.poll();
     }
 
+    //Returns the list of songs as a string.
     public String listSongs() {
 	String result = "";
 	
