@@ -12,6 +12,9 @@ import controller.ActionListenerType;
 import controller.UserLogInListener;
 
 public class UserLogInComponent extends JPanel {
+    
+    private model.Jukebox jukebox = new model.Jukebox();
+    
     private JLabel userdIDLabel;
     private JLabel passwordLabel;
     private JLabel statusLabel;
@@ -34,7 +37,10 @@ public class UserLogInComponent extends JPanel {
     private JButton signOutButton;
     private JButton loginButton;
 
-    public UserLogInComponent() {
+    public UserLogInComponent(model.Jukebox jukebox) {
+	// TODO
+	this.jukebox = jukebox;
+	
 	this.userdIDLabel = new JLabel("Account Name");
 	this.passwordLabel = new JLabel("Password");
 	this.statusLabel = new JLabel("Status:");
@@ -47,9 +53,8 @@ public class UserLogInComponent extends JPanel {
 	this.loginButton = new JButton("Login");
 	
 	// add the listeners
-	// TODO : add the jukebox to replace the null
-	this.signOutButton.addActionListener(new UserLogInListener(ActionListenerType.SIGNOUT, null, this));
-	this.loginButton.addActionListener(new UserLogInListener(ActionListenerType.LOGIN, null, this));
+	this.signOutButton.addActionListener(new UserLogInListener(ActionListenerType.SIGNOUT, jukebox, this));
+	this.loginButton.addActionListener(new UserLogInListener(ActionListenerType.LOGIN, jukebox, this));
 	
 	// set the the view layout
 	int rowCount = 4;
@@ -61,17 +66,17 @@ public class UserLogInComponent extends JPanel {
 	this.add(this.userdIDField);
 	this.add(this.passwordLabel);
 	this.add(this.passwordField);
-	this.add(this.statusLabel);
-	this.add(this.userStatusLabel);
 	this.add(this.signOutButton);
 	this.add(this.loginButton);
+	this.add(this.statusLabel);
+	this.add(this.userStatusLabel);
     }
     
     public String getUserIDFieldValue() {
 	return this.userdIDField.getText();
     }
     
-    public String passwordFieldValue() {
+    public String getPasswordFieldValue() {
 	return String.valueOf(this.passwordField.getPassword());
     }
 }

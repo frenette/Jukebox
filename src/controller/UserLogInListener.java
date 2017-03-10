@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import model.Jukebox;
 import model.Student;
+import model.StudentCollection;
 import view.UserLogInComponent;
 
 public class UserLogInListener implements ActionListener {
@@ -21,7 +22,7 @@ public class UserLogInListener implements ActionListener {
 	    this.thisActionListener = new signOut();
 	}
     }
-    
+
     public UserLogInListener(ActionListenerType type, Jukebox jukebox, UserLogInComponent userLogInComponent) {
 	this.jukebox = jukebox;
 	this.userLogInComponent = userLogInComponent;
@@ -45,33 +46,34 @@ public class UserLogInListener implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	    // TODO Auto-generated method stub
 	    System.out.println("logIn");
 
-	    /*
-	     * TODO : get the user field's username, get the password field's
-	     * password.
-	     */
-	    
 	    System.out.println(userLogInComponent.getUserIDFieldValue());
-	    System.out.println(userLogInComponent.passwordFieldValue());
+	    System.out.println(userLogInComponent.getPasswordFieldValue());
 
-	    // Attempting login student
-	    // String studentID = TODO
-	    // // get the student trying to log in
-	    // Student student =
-	    // jukebox.getSongCollection().getStudent(studentID);
-	    //
-	    // if (student != null) {
-	    // // valid student userID
-	    // String password = TODO;
-	    // if (student.correctPassowrd(password)) {
-	    // this.jukebox.setCurrentUser(student)
-	    // return;
-	    // }
-	    // }
-	    //
-	    // // The student was not a valid student
+	    String studentID = userLogInComponent.getUserIDFieldValue();
+	    Student student = jukebox.getStudentCollection().getStudent(studentID);
+
+	    if (student != null) {
+		// valid student userID
+		String password = userLogInComponent.getPasswordFieldValue();
+
+		if (student.correctPassowrd(password)) {
+		    // valid password
+		    jukebox.setCurrentStudent(student);
+		    // The student is valid
+		    System.out.println("Success : valid user.");
+		    System.out.println("getCurrentStudent: " + jukebox.getCurrentStudent().toString());
+		    jukebox.setCurrentStudent(student);
+		    return;
+		}
+
+		// The password is invalid
+		System.out.println("Error : invalid password.");
+	    }
+
+	    // The student is invalid
+	    System.out.println("Error : invalid student.");
 	    // TODO : create error dialog
 
 	}
@@ -85,16 +87,21 @@ public class UserLogInListener implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	    System.out.println("signOut");
-
+	    
 	    // TODO
-//	    if (jukebox.getCurrentStudent() != null) {
-//		jukebox.setCurrentStudent(null);
-//	    } else {
-//		/*
-//		 * TODO : we have the ability to give an alert because the user
-//		 * is trying to log out when there is nothing to log out
-//		 */
-//	    }
+//	    System.out.println("getCurrentStudent: " + jukebox.getCurrentStudent().toString());
+	    System.out.println("I am here 1");
+	    if (jukebox.getCurrentStudent() != null) {
+		System.out.println("I am here 2");
+		System.out.println("Current studdent: " + jukebox.getCurrentStudent().toString());
+		jukebox.setCurrentStudent(null);
+	    } else {
+		/*
+		 * TODO : we have the ability to give an alert because the user
+		 * is trying to log out when there is nothing to log out
+		 */
+		System.out.println("I am here 3");
+	    }
 	}
     }
 }

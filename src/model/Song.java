@@ -5,9 +5,6 @@ import java.nio.file.Paths;
 
 public class Song {
 
-    /*
-     *  TODO
-     */
     private String artist;
     private String title;
     private Path fileName;

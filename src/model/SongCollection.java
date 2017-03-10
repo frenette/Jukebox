@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Iterator;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -17,6 +18,10 @@ public class SongCollection {
     
     public Song getSong(String songID) {
 	return this.songs.get(songID);
+    }
+    
+    public Iterator<Song> getIterator() {
+	return this.songs.values().iterator();
     }
 
 }

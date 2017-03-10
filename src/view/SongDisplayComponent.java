@@ -1,42 +1,44 @@
 package view;
 
-import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.util.Iterator;
 
 import javax.swing.JPanel;
 
-import controller.SongJButtonActionListener;
 import model.Song;
-import model.Student;
+import model.SongCollection;
 
 /*
  * Description : In iteration 1 we will be displaying the songs as simple buttons
  */
 
+@SuppressWarnings("serial")
 public class SongDisplayComponent extends JPanel {
     
     private model.Jukebox jukebox;
     
     public SongDisplayComponent(model.Jukebox jukebox) {
 	super();
+	System.out.println("SongDisplayComponent constructor start");
 	this.jukebox = jukebox;
+//	this.setLayout(new FlowLayout());
+	this.initilizeButtons();
+	
+	System.out.println("SongDisplayComponent constructor done");
     }
     
-//    private void initilizeButtons() {
-//	// get the songs from the jukebox
-//	jukebox.get
-//    }
-//    
-//    private 
-//    
-//    // Testing
-//    private void addSongJButton() {
-//	System.out.println("Adding song button");
-//	Song testSong = new Song("Song artist", "Song title", "Song fileName", 10);
-//	Student testStudent = new Student("Example user", "Example password");
-//	SongJButton button = new SongJButton(new model.Jukebox(testStudent), testSong);
-//	button.setSize(50, 50);
-//	button.setBackground(Color.BLUE);
-//	button.addActionListener(new SongJButtonActionListener());
-//	this.add(button);
-//    }
+    private void initilizeButtons() {
+	// get the songs from the jukebox
+	SongCollection songCollection = this.jukebox.getSongCollection();
+	
+	System.out.println("initilizeButtons start");
+	
+	Iterator<Song> songIterator = songCollection.getIterator();
+	
+	while (songIterator.hasNext()) {
+	    System.out.println("initilizeButtons loop");
+	    this.add(new SongJButton(this.jukebox, songIterator.next()));
+	}
+    }
 }

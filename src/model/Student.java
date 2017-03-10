@@ -42,5 +42,10 @@ public class Student {
 	this.songsPlayed.incrementPlayCount();
 	this.playTime -= song.getLength();
     }
+    
+    @Override
+    public String toString() {
+	return this.userID;
+    }
 
 }
