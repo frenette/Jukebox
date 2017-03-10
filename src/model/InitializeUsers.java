@@ -1,3 +1,6 @@
+/*
+ * InitializeUsers holds required users.
+ */
 package model;
 
 public class InitializeUsers {
