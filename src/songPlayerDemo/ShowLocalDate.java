@@ -10,7 +10,8 @@ public class ShowLocalDate {
 	// LocalDate lastDatePlayed = LocalDate.now();
 	// lastDatePlayed = lastDatePlayed.minusDays(0);
 	
-	System.out.println("Today: " + today);
+//	System.out.println("Today: " + today);
+//	System.out.println("Today: " + LocalDate.now().);
 	
 	// System.out.println (today.compareTo(lastDatePlayed) == 0);
 	// System.out.println (today.compareTo(lastDatePlayed) == 0);

@@ -20,7 +20,7 @@ public class InitializeSongs {
 
     public InitializeSongs(Jukebox jukebox) {
 	this.jukebox = jukebox;
-	initializeSongs();
+	this.initializeSongs();
     }
     
     //Cleaner initialization method.

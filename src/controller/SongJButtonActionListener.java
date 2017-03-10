@@ -3,7 +3,6 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import model.Jukebox;
@@ -19,7 +18,7 @@ public class SongJButtonActionListener implements ActionListener {
      * logged on
      */
     private Jukebox jukebox;
-    
+
     public SongJButtonActionListener(Jukebox jukebox) {
 	super();
 	this.jukebox = jukebox;
@@ -61,13 +60,21 @@ public class SongJButtonActionListener implements ActionListener {
 		 * already played 3 songs, the user does not have enough time to
 		 * play the song, or the song has already been played 3 times
 		 */
+		if (currentStudent.hasRemaningPlays()) {
+		    // the user has no more plays
+		    JOptionPane.showMessageDialog(null,
+			    song.toString() + " has reached the max number of plays for the day.");
+		} else {
+		    // the song has no more plays
+		    JOptionPane.showMessageDialog(null, "You have reached the max number of plays for the day.");
+		}
 	    }
-	    
+
 	    System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n");
 	} else {
 	    // open a dialog box saying you need to log in first
 	    System.out.println("currentStudent == null");
-	    JOptionPane.showMessageDialog(null, "User must log in before playing a song");
+	    JOptionPane.showMessageDialog(null, "You must log in before playing a song.");
 	}
     }
     // End testing
