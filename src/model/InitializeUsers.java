@@ -10,6 +10,7 @@ public class InitializeUsers {
 
     public InitializeUsers(Jukebox jukebox) {
 	this.jukebox = jukebox;
+	this.initializeUsers();
     }
 
     public void initializeUsers() {

@@ -16,6 +16,7 @@ public class InitializeSongs {
 
     public InitializeSongs(Jukebox jukebox) {
 	this.jukebox = jukebox;
+	this.initializeSongs();
     }
 
     public void initializeSongs() {

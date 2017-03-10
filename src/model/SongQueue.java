@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Observable;
-import java.util.Observer;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -17,20 +16,6 @@ public class SongQueue extends Observable implements Iterator<Song> {
 	this.songs = new LinkedList<>();
 	this.songPlayer = new SongPlayer(this);
 	this.addObserver(this.songPlayer);
-    }
-
-    /*
-     * NOTE : testing uses only
-     */
-    public void initializeObserver() {
-	this.addObserver(new Observer() {
-
-	    @Override
-	    public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-	    }
-
-	});
     }
 
     public void addSong(Song song, Student student) {
@@ -58,8 +43,12 @@ public class SongQueue extends Observable implements Iterator<Song> {
     }
 
     public String listSongs() {
-    String result = "";
-    for(Song s : songs) { result += s; }
+	String result = "";
+	
+	for (Song s : songs) {
+	    result += s;
+	}
+
 	this.songs.forEach(System.out::println);
 	return result;
     }

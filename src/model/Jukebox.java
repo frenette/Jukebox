@@ -19,13 +19,11 @@ public class Jukebox implements Observer {
 	this.currentStudent = null;
 
 	// Initialize users
-	InitializeUsers initUsrs = new InitializeUsers(this);
-	initUsrs.initializeUsers();
+	new InitializeUsers(this);
 	System.out.println("Initialized users");
 
 	// Initialize songs
-	InitializeSongs initSongs = new InitializeSongs(this);
-	initSongs.initializeSongs();
+	new InitializeSongs(this);
 	System.out.println("Initialized songs");
     }
 
