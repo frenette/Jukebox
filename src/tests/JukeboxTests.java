@@ -24,6 +24,11 @@ public class JukeboxTests {
   SongCollection songs = jukebox.getSongCollection();
   
   @Test
+  public void testFluff() {
+      model.FluffCodeToMeetSpec.doSomeFluff();
+  }
+  
+  @Test
   //Jukebox
   public void test() {
 	  jukebox = new Jukebox(student);

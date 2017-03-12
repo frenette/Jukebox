@@ -71,9 +71,14 @@ public class Student extends Observable implements Observer {
 
     // Subtracts minutes from the student, and adds a song played.
     public void queuedSong(Song song) {
-	this.songsPlayed.incrementPlayCount();
 	this.playTime -= song.getLength();
+	// NOTE : increment count needs to be second because it calls notify the observers
+	this.songsPlayed.incrementPlayCount();
 
+	System.out.println("this.playTime: " + this.playTime);
+	
+	//
+	
 	this.hasChanged();
 	this.notifyObservers();
     }

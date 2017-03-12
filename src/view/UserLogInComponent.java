@@ -95,15 +95,14 @@ public class UserLogInComponent extends JPanel implements Observer {
 	// hours:minutes:seconds>
 
 	Student currentStudent = this.jukebox.getCurrentStudent();
-	System.out.println(currentStudent);
-	System.out.println(currentStudent);
-	System.out.println(currentStudent);
-	System.out.println(currentStudent);
 
 	if (currentStudent != null) {
-	    int songsPlayed = this.jukebox.getCurrentStudent().songsPlayedToday();
-	    System.out.println("this.jukebox.getCurrentStudent().songsPlayedToday(): " + songsPlayed);
+	    int songsPlayed = currentStudent.songsPlayedToday();
+	    System.out.println("00000000000000000000000000000");
+	    System.out.println("currentStudent.songsPlayedToday(): " + songsPlayed);
 	    int secondsRemaining = currentStudent.getPlayTime();
+	    System.out.println("currentStudent.getPlayTime(): " + secondsRemaining);
+	    System.out.println("00000000000000000000000000000");
 	    int hours = secondsRemaining / 3600;
 	    int minutes = (secondsRemaining % 3600) / 60;
 	    int seconds = secondsRemaining % 60;
