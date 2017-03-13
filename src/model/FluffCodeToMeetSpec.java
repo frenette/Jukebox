@@ -1,3 +1,4 @@
+// is a fluf class to meet spec code coverage because my code is only fired when it is midnight
 package model;
 
 public class FluffCodeToMeetSpec {
