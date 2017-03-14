@@ -1,5 +1,9 @@
 package tests;
 
+/*
+ * NOTE : This package should contain unit tests that get at least 90% code coverage in the model package
+ */
+
 import static org.junit.Assert.*;
 
 import org.junit.Test;
@@ -11,12 +15,7 @@ import model.SongQueue;
 import model.Student;
 import model.StudentCollection;
 
-public class WhatsHere {
-
-  public static void main(String[] args) {
-    System.out.println("This package should contain unit tests that get at least 90% code coverage in the model package");
-  
-  }
+public class JukeboxTests {
   
   Jukebox jukebox = new Jukebox();
   StudentCollection students = jukebox.getStudentCollection();
