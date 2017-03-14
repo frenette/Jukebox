@@ -17,12 +17,12 @@ public class WhatsHere {
     System.out.println("This package should contain unit tests that get at least 90% code coverage in the model package");
   
   }
+  
   Jukebox jukebox = new Jukebox();
   StudentCollection students = jukebox.getStudentCollection();
   SongQueue queue = jukebox.getSongQueue();
   Student student = students.getStudent("Chris");
   SongCollection songs = jukebox.getSongCollection();
-  
   
   @Test
   //Jukebox
@@ -31,10 +31,15 @@ public class WhatsHere {
 	  student.correctPassowrd("1");
 	  jukebox.setCurrentStudent(student);
 	  student = jukebox.getCurrentStudent();
+	  student.getPlayTime();
+	  student.getPlayInformation();
+	  student.hasRemaningPlays();
+	  student.songsPlayedToday();
 	  assertEquals("Chris", student.toString());
 	  
 	  
   }
+  
   @Test
   //Songs
   public void test2() {

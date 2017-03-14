@@ -4,6 +4,8 @@
 package view;
 
 import java.awt.GridLayout;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -13,8 +15,10 @@ import javax.swing.JTextField;
 
 import controller.ActionListenerType;
 import controller.UserLogInListener;
+import model.Student;
 
-public class UserLogInComponent extends JPanel {
+@SuppressWarnings("serial")
+public class UserLogInComponent extends JPanel implements Observer {
 
     private model.Jukebox jukebox = new model.Jukebox();
 
@@ -70,17 +74,17 @@ public class UserLogInComponent extends JPanel {
 	this.add(this.userStatusLabel);
     }
 
-    //Gets the username from the username field.
+    // Gets the username from the username field.
     public String getUserIDFieldValue() {
 	return this.userdIDField.getText();
     }
 
-    //Gets password from password field.
+    // Gets password from password field.
     public String getPasswordFieldValue() {
 	return String.valueOf(this.passwordField.getPassword());
     }
 
-    //Clear fields on wrong entry.
+    // Clear fields on wrong entry.
     public void clearFields() {
 	this.userdIDField.setText(null);
 	this.passwordField.setText(null);
@@ -89,7 +93,32 @@ public class UserLogInComponent extends JPanel {
     public void updateStatusLabel() {
 	// <number of songs selected today> selected, <time until the next day
 	// hours:minutes:seconds>
-	// TODO
-//	this.statusLabel.setText(Integer.toString(this.jukebox.getCurrentStudent().songsPlayedToday()) + " selected, " + this.jukebox.getCurrentStudent().get);
+
+	Student currentStudent = this.jukebox.getCurrentStudent();
+	System.out.println(currentStudent);
+	System.out.println(currentStudent);
+	System.out.println(currentStudent);
+	System.out.println(currentStudent);
+
+	if (currentStudent != null) {
+	    int songsPlayed = this.jukebox.getCurrentStudent().songsPlayedToday();
+	    System.out.println("this.jukebox.getCurrentStudent().songsPlayedToday(): " + songsPlayed);
+	    int secondsRemaining = currentStudent.getPlayTime();
+	    int hours = secondsRemaining / 3600;
+	    int minutes = (secondsRemaining % 3600) / 60;
+	    int seconds = secondsRemaining % 60;
+	    String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
+	    
+	    this.userStatusLabel.setText(songsPlayed + " selected, " + timeString);
+	} else {
+	    this.userStatusLabel.setText("Login First");
+	}	
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+	System.out.println("The UserLogInComponent is saying it has changed");
+	System.out.println(o.getClass());
+	this.updateStatusLabel();
     }
 }

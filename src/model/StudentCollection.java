@@ -22,4 +22,10 @@ public class StudentCollection {
     public Student getStudent(String userID) {
 	return students.get(userID);
     }
+    
+    /*
+     * Reset all of the students based off of a timer
+     */
+    
+    
 }

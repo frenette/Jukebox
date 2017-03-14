@@ -43,8 +43,7 @@ public class UserLogInListener implements ActionListener {
     }
 
     /*
-     * Class : logIn
-     * Verifys username and password
+     * Class : logIn Verifys username and password
      */
     private class logIn implements ActionListener {
 
@@ -52,42 +51,65 @@ public class UserLogInListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	    System.out.println("logIn");
 
-	    System.out.println(userLogInComponent.getUserIDFieldValue());
-	    System.out.println(userLogInComponent.getPasswordFieldValue());
+	    /*
+	     * NOTE : we assume that a user can't login if there is already a
+	     * current student
+	     */
 
-	    String studentID = userLogInComponent.getUserIDFieldValue();
-	    Student student = jukebox.getStudentCollection().getStudent(studentID);
+	    if (jukebox.getCurrentStudent() == null) {
+		String newStudentID = userLogInComponent.getUserIDFieldValue();
+		Student newStudent = jukebox.getStudentCollection().getStudent(newStudentID);
 
-	    if (student != null) {
-		// valid student userID
-		String password = userLogInComponent.getPasswordFieldValue();
+		System.out.println(userLogInComponent.getUserIDFieldValue());
+		System.out.println(userLogInComponent.getPasswordFieldValue());
 
-		if (student.correctPassowrd(password)) {
-		    // valid password
-		    jukebox.setCurrentStudent(student);
-		    // The student is valid
-		    System.out.println("Success : valid user.");
-		    System.out.println("getCurrentStudent: " + jukebox.getCurrentStudent().toString());
-		    jukebox.setCurrentStudent(student);
-		    return;
+		if (newStudent != null) {
+		    // valid student userID
+		    String password = userLogInComponent.getPasswordFieldValue();
+
+		    if (newStudent.correctPassowrd(password)) {
+			// valid password
+			jukebox.setCurrentStudent(newStudent);
+			// The student is valid
+			System.out.println("Success : valid user.");
+			System.out.println("getCurrentStudent: " + jukebox.getCurrentStudent().toString());
+
+			// set the newStudent to be the jukebox's currentStudent
+			jukebox.setCurrentStudent(newStudent);
+
+			// add the userLogInComponent as a listener of the
+			// newStudent which will be the currentUser
+			// TODO
+			jukebox.getCurrentStudent().getPlayInformation().addObserver(userLogInComponent);
+			System.out.println("newStudent.countObservers(): " + newStudent.countObservers());
+
+			// have the userLogInComponent update the status label
+			userLogInComponent.updateStatusLabel();
+
+			return;
+
+		    }
+
+		    // The password is invalid
+		    System.out.println("Error : invalid password.");
 		}
 
-		// The password is invalid
-		System.out.println("Error : invalid password.");
+		// The student is invalid
+		System.out.println("Error : invalid student.");
+		// clear the field
+		userLogInComponent.clearFields();
+	    } else {
+		/*
+		 * NOTE : there is already a user logged in
+		 */
+
+		System.out.println("ERROR: there is already a user logged in.");
 	    }
-
-	    // The student is invalid
-	    System.out.println("Error : invalid student.");
-
-	    // clear the field
-	    userLogInComponent.clearFields();
-
 	}
     }
 
     /*
-     * Class : signOut
-     * Controls the user signing out.
+     * Class : signOut Controls the user signing out.
      */
     private class signOut implements ActionListener {
 
@@ -99,13 +121,22 @@ public class UserLogInListener implements ActionListener {
 	    // System.out.println("getCurrentStudent: " +
 	    // jukebox.getCurrentStudent().toString());
 	    System.out.println("I am here 1");
-	    if (jukebox.getCurrentStudent() != null) {
+
+	    Student currentStudent = jukebox.getCurrentStudent();
+
+	    if (currentStudent != null) {
 		System.out.println("I am here 2");
 		System.out.println("Current studdent: " + jukebox.getCurrentStudent().toString());
+
+		// remove the observers for the currentStudent
+		jukebox.getCurrentStudent().getPlayInformation().deleteObserver(userLogInComponent);
 		jukebox.setCurrentStudent(null);
 
 		// clear the field
 		userLogInComponent.clearFields();
+
+		// have the userLogInComponent update the status label
+		userLogInComponent.updateStatusLabel();
 	    } else {
 		/*
 		 * TODO : we have the ability to give an alert because the user
