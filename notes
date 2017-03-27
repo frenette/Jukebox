@@ -1,10 +1,44 @@
-NOTES:
-with the songs we only care about the file path
-DailyPlayStats
+At startup, the user is given the option to start with a default state where no
+songs have played and everyone has full time remaining. Or the user can start
+where the system was saved from an earlier time
 
-TODO:
-	- add the status changer when a song plays, or a user logs in
-	- make Student Observable, and have the jukebox an Observer
+Supply the option to save data before termination, quit without saving the current state, or cancel.
 
+    public void reinitilizeSerializedData() {
+	try {
+	    FileInputStream songQueueFileIn = new FileInputStream("/tmp/songQueue.ser");
+	    ObjectInputStream songQueueOut = new ObjectInputStream(songQueueFileIn);
+	    SongQueue songQueue = (SongQueue) songQueueOut.readObject();
+	    // TODO : deal with listeners later
+	    this.jukebox.setSongQueue(songQueue);
+	    songQueue.config();
+	    songQueueOut.close();
+	    songQueueFileIn.close();
+	    System.out.println("Deserialized data in /tmp/songQueue.ser");
 
-24:59:42
+	    FileInputStream studentCollectionFileIn = new FileInputStream("/tmp/studentCollection.ser");
+	    ObjectInputStream studentCollectionOut = new ObjectInputStream(studentCollectionFileIn);
+	    StudentCollection studentCollection = (StudentCollection) studentCollectionOut.readObject();
+	    // TODO : deal with listeners later
+	    this.jukebox.setStudentCollection(studentCollection);
+	    studentCollectionOut.close();
+	    studentCollectionFileIn.close();
+	    System.out.println("Deserialized data in /tmp/studentCollection.ser");
+
+	    FileInputStream songCollectionFileIn = new FileInputStream("/tmp/songCollection.ser");
+	    ObjectInputStream songCollectionOut = new ObjectInputStream(songCollectionFileIn);
+	    SongCollection songCollection = (SongCollection) songCollectionOut.readObject();
+	    // TODO : deal with listeners later
+	    this.jukebox.setSongCollection(songCollection);
+	    songCollectionOut.close();
+	    songCollectionFileIn.close();
+	    System.out.println("Deserialized data in /tmp/songCollection.ser");
+	} catch (IOException i) {
+	    i.printStackTrace();
+	    return;
+	} catch (ClassNotFoundException c) {
+	    System.out.println("Employee class not found");
+	    c.printStackTrace();
+	    return;
+	}
+    }

@@ -4,11 +4,7 @@
 package model;
 
 public class InitializeUsers {
-
-    /*
-     * Chris 1 Devon 22 River 333 Ryan 4444
-     */
-
+    
     private Jukebox jukebox;
 
     public InitializeUsers(Jukebox jukebox) {

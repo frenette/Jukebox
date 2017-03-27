@@ -97,27 +97,33 @@ public class UserLogInComponent extends JPanel implements Observer {
 	Student currentStudent = this.jukebox.getCurrentStudent();
 
 	if (currentStudent != null) {
-	    int songsPlayed = currentStudent.songsPlayedToday();
-	    System.out.println("00000000000000000000000000000");
-	    System.out.println("currentStudent.songsPlayedToday(): " + songsPlayed);
+	    int songsPlayed = currentStudent.getTodaysPlayCount();
 	    int secondsRemaining = currentStudent.getPlayTime();
-	    System.out.println("currentStudent.getPlayTime(): " + secondsRemaining);
-	    System.out.println("00000000000000000000000000000");
+
+	    // System.out.println("00000000000000000000000000000");
+	    // System.out.println("currentStudent.songsPlayedToday(): " +
+	    // songsPlayed);
+	    // System.out.println("currentStudent.getPlayTime(): " +
+	    // secondsRemaining);
+	    // System.out.println("00000000000000000000000000000");
+
 	    int hours = secondsRemaining / 3600;
 	    int minutes = (secondsRemaining % 3600) / 60;
 	    int seconds = secondsRemaining % 60;
 	    String timeString = String.format("%02d:%02d:%02d", hours, minutes, seconds);
-	    
+
 	    this.userStatusLabel.setText(songsPlayed + " selected, " + timeString);
 	} else {
 	    this.userStatusLabel.setText("Login First");
-	}	
+	}
     }
 
     @Override
     public void update(Observable o, Object arg) {
-	System.out.println("The UserLogInComponent is saying it has changed");
-	System.out.println(o.getClass());
+	// System.out.println("The UserLogInComponent is saying it has
+	// changed");
+	// System.out.println(o.getClass());
+	
 	this.updateStatusLabel();
     }
 }

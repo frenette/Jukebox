@@ -3,8 +3,6 @@
  */
 package view;
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.util.Iterator;
 
 import javax.swing.JPanel;
@@ -38,7 +36,7 @@ public class SongDisplayComponent extends JPanel {
 	
 	System.out.println("initilizeButtons start");
 	
-	Iterator<Song> songIterator = songCollection.getIterator();
+	Iterator<Song> songIterator = songCollection.iterator();
 	
 	while (songIterator.hasNext()) {
 	    System.out.println("initilizeButtons loop");

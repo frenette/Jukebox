@@ -5,22 +5,17 @@
 
 package model;
 
-import java.util.Observable;
-import java.util.Observer;
-
-import controller.SongPlayer;
-
-public class Jukebox implements Observer {
-
+public class Jukebox {
+    
     private SongCollection songs;
     private SongQueue queue;
     private StudentCollection students;
     private Student currentStudent;
 
     public Jukebox() {
-	this.songs = new SongCollection();
+	this.songs = SongCollection.getSongCollection();
 	this.queue = new SongQueue();
-	this.students = new StudentCollection();
+	this.students =  StudentCollection.getStudentCollection();
 	this.currentStudent = null;
 
 	// Initialize users
@@ -36,9 +31,9 @@ public class Jukebox implements Observer {
      * Used for dependency injection for testing
      */
     public Jukebox(Student injectedStudent) {
-	this.songs = new SongCollection();
+	this.songs = SongCollection.getSongCollection();
 	this.queue = new SongQueue();
-	this.students = new StudentCollection();
+	this.students =  StudentCollection.getStudentCollection();
 	this.currentStudent = injectedStudent;
 
 	// Initialize users
@@ -51,44 +46,41 @@ public class Jukebox implements Observer {
 	initSongs.initializeSongs();
 	System.out.println("Initialized songs");
     }
-  
+
     public SongCollection getSongCollection() {
 	return this.songs;
     }
-    
-    //adds a song to song collections
+
+    // adds a song to song collections
     public void addToSongCollection(Song song) {
 	this.songs.addSong(song);
     }
 
-    
     public SongQueue getSongQueue() {
 	return this.queue;
     }
 
-    
     public StudentCollection getStudentCollection() {
 	return this.students;
     }
-
     
+    public void setSongCollection(SongCollection songs) {
+	this.songs = songs;
+    }
+
+    public void setSongQueue(SongQueue queue) {
+	this.queue = queue;
+    }
+
+    public void setStudentCollection(StudentCollection students) {
+	this.students = students;
+    }
+
     public Student getCurrentStudent() {
 	return this.currentStudent;
     }
 
-    
     public void setCurrentStudent(Student newStudent) {
 	this.currentStudent = newStudent;
-    }
-
-    @Override
-    public void update(Observable o, Object arg) {
-	// TODO
-	// if (arg instanceof Student) {
-	// currentStudent = (Student) arg;
-	// selector.unlock();
-	// } else {
-	// play((Song) arg);
-	// }
     }
 }

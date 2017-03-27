@@ -80,7 +80,7 @@ public class UserLogInListener implements ActionListener {
 			// add the userLogInComponent as a listener of the
 			// newStudent which will be the currentUser
 			// TODO
-			jukebox.getCurrentStudent().getPlayInformation().addObserver(userLogInComponent);
+			jukebox.getCurrentStudent().getDailyPlayStats().addObserver(userLogInComponent);
 			System.out.println("newStudent.countObservers(): " + newStudent.countObservers());
 
 			// have the userLogInComponent update the status label
@@ -117,19 +117,19 @@ public class UserLogInListener implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 	    System.out.println("signOut");
 
-	    // TODO
 	    // System.out.println("getCurrentStudent: " +
 	    // jukebox.getCurrentStudent().toString());
-	    System.out.println("I am here 1");
+	    // System.out.println("I am here 1");
 
 	    Student currentStudent = jukebox.getCurrentStudent();
 
 	    if (currentStudent != null) {
-		System.out.println("I am here 2");
-		System.out.println("Current studdent: " + jukebox.getCurrentStudent().toString());
+		// System.out.println("I am here 2");
+		// System.out.println("Current studdent: " +
+		// jukebox.getCurrentStudent().toString());
 
 		// remove the observers for the currentStudent
-		jukebox.getCurrentStudent().getPlayInformation().deleteObserver(userLogInComponent);
+		jukebox.getCurrentStudent().getDailyPlayStats().deleteObserver(userLogInComponent);
 		jukebox.setCurrentStudent(null);
 
 		// clear the field
@@ -142,7 +142,7 @@ public class UserLogInListener implements ActionListener {
 		 * TODO : we have the ability to give an alert because the user
 		 * is trying to log out when there is nothing to log out
 		 */
-		System.out.println("I am here 3");
+		// System.out.println("I am here 3");
 	    }
 	}
     }

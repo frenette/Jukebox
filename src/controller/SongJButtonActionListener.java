@@ -29,12 +29,6 @@ public class SongJButtonActionListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
-	testing(e);
-    }
-
-    // Testing
-    private void testing(ActionEvent e) {
 	SongJButton source = (SongJButton) e.getSource();
 	Song song = source.getSong();
 	SongQueue songQueue = jukebox.getSongQueue();
@@ -43,10 +37,11 @@ public class SongJButtonActionListener implements ActionListener {
 
 	// check if there is a student
 	if (currentStudent != null) {
-	    System.out.println("\n=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
-	    System.out.println("userID: " + currentStudent.getUserID());
-	    System.out.println("songTitle: " + ((SongJButton) e.getSource()).getSong().toString());
-	    System.out.println("canPlay: " + currentStudent.canPlay(song));
+	    // System.out.println("\n=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=");
+	    // System.out.println("userID: " + currentStudent.getUserID());
+	    // System.out.println("songTitle: " + ((SongJButton)
+	    // e.getSource()).getSong().toString());
+	    // System.out.println("canPlay: " + currentStudent.canPlay(song));
 
 	    // check if the currentStudent can play the song
 	    if (currentStudent.canPlay(song)) {
@@ -73,7 +68,7 @@ public class SongJButtonActionListener implements ActionListener {
 		}
 	    }
 
-	    System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n");
+//	    System.out.println("=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n");
 	} else {
 	    // open a dialog box saying you need to log in first
 	    System.out.println("currentStudent == null");

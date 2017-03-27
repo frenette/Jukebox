@@ -4,6 +4,7 @@ package model;
 public class FluffCodeToMeetSpec {
 
     public static void doSomeFluff() {
+	@SuppressWarnings("unused")
 	Boolean isFluff = null;
 	isFluff = true;
 	isFluff = true;

@@ -36,9 +36,9 @@ public class JukeboxTests {
 	  jukebox.setCurrentStudent(student);
 	  student = jukebox.getCurrentStudent();
 	  student.getPlayTime();
-	  student.getPlayInformation();
+	  student.getDailyPlayStats();
 	  student.hasRemaningPlays();
-	  student.songsPlayedToday();
+	  student.getTodaysPlayCount();
 	  assertEquals("Chris", student.toString());
 	  
 	  
@@ -51,7 +51,7 @@ public class JukeboxTests {
 	  songs.getSong("Danse Macabre");
 	  queue.addSong(s , student);
 	  assertEquals(34, s.getLength());
-	  s.getSongPath();
+	  s.getPath();
 	  assertTrue(student.canPlay(s));
 	  String songString = queue.listSongs();
 	  assertFalse(songString.equals(null));
