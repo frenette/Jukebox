@@ -38,6 +38,8 @@ public class StudentCollection implements Iterable<Student>, Serializable{
     
     private static final long serialVersionUID = -5352286475152700333L;
     private Map<String, Student> students;
+    
+    public LocalDate currentDate = LocalDate.now();
 
     private StudentCollection() {
 	this.students = new TreeMap<>();
@@ -96,5 +98,12 @@ public class StudentCollection implements Iterable<Student>, Serializable{
 	    // start the timer over again
 	    createTimer();
 	}
+    }
+
+    public void resetDates() {
+	Collection<Student> studentsAsCollection = students.values();
+	    for (Student s : studentsAsCollection) {
+		s.resetDailyPlayCount();
+	    }
     }
 }

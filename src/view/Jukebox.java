@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.time.LocalDate;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -73,6 +74,7 @@ public class Jukebox extends JFrame {
 			songCollectionOut.close();
 			songCollectionFileIn.close();
 			System.out.println("Deserialized data in /tmp/songCollection.ser");
+
 		    } catch (IOException i) {
 			i.printStackTrace();
 			return;
@@ -155,7 +157,7 @@ public class Jukebox extends JFrame {
 		System.out.println("windowDeactivated(WindowEvent e)");
 	    }
 	});
-	
+
 	this.setVisible(true);
     }
 
@@ -174,8 +176,20 @@ public class Jukebox extends JFrame {
 
 	this.add(new SongCollectionJTableComponent(this.jukebox));
 	System.out.println("SongCollectionJTableComponent done");
-		
-	this.songQueueComponent.updateUI();
+
+	// deal with the change of dates
+	LocalDate currentDate = LocalDate.now();
 	
+	LocalDate songCollectionDate = this.jukebox.getSongCollection().currentDate;
+	LocalDate userCollectionDate = this.jukebox.getStudentCollection().currentDate;
+
+	
+	if (!(currentDate.getYear() == songCollectionDate.getYear() && currentDate.getDayOfYear() == songCollectionDate.getDayOfYear())) {
+	    this.jukebox.getStudentCollection().resetDates();
+	    this.jukebox.getSongCollection().resetDates();
+	}
+	
+	this.songQueueComponent.updateUI();
+
     }
 }
