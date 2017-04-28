@@ -40,11 +40,12 @@ public class SongCollection implements Iterable<Song>, Serializable{
     private static final long serialVersionUID = -2102470815939806538L;
     private Map<String, Song> songs;
     
-    public LocalDate currentDate = LocalDate.now();
+    public LocalDate currentDate;
 
     private SongCollection() {
 	this.songs = new TreeMap<>();
 	this.createTimer();
+	this.currentDate = LocalDate.now();
     }
 
     // Adds a song to the collection

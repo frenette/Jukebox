@@ -39,11 +39,12 @@ public class StudentCollection implements Iterable<Student>, Serializable{
     private static final long serialVersionUID = -5352286475152700333L;
     private Map<String, Student> students;
     
-    public LocalDate currentDate = LocalDate.now();
+    public LocalDate currentDate;
 
     private StudentCollection() {
 	this.students = new TreeMap<>();
 	this.createTimer();
+	this.currentDate = LocalDate.now();
     }
 
     // Adds a student to the collection.
